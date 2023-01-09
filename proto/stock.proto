@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package stock;
+
+option go_package = "./protoc";
+
+message OrderGoodsID{
+  int64 goods_id = 1;
+  int64 goods_num = 2;
+}
+
+message OrderReturn{
+  int64 goods_id = 1;
+  int64 demand = 3;
+  int64 stock = 4;
+  int64 deal = 5;
+}
+
+message OrderReduceStockRequest{
+  repeated OrderGoodsID GoodsID = 1;
+  int64 OrderID = 2;
+  int64 IsAll = 3;
+}
+
+message OrderReduceStockResponse{
+  int64 states = 1;
+  repeated OrderReturn goods_states = 2;
+}
+
+service OrderReduceStockOperation {
+  rpc OrderReduceStock(OrderReduceStockRequest) returns (OrderReduceStockResponse);
+}
+
