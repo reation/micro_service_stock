@@ -71,15 +71,9 @@ func (m *defaultGoodsStockModel) GetGoodsStockInfoByGoodsIDList(ctx context.Cont
 		return nil, err
 	}
 	for _, v := range stockInfo {
-		fmt.Println("-----------mysql-----------------")
-		fmt.Println(v)
-		fmt.Println("-----------mysql-----------------")
 		resp[v.GoodsId] = v
 	}
-	fmt.Println("-----------mysqlq-----------------")
-	fmt.Println(resp[2])
-	fmt.Println(resp[3])
-	fmt.Println("-----------mysqlq-----------------")
+
 	return resp, nil
 }
 
