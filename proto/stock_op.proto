@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package stock_op;
+
+option go_package = "./protoc";
+
+message StockOpGoodInfo {
+  int64 goods_id = 1;
+  int64 num = 2;
+}
+
+message OrderReturnRequest {
+  repeated StockOpGoodInfo goodsInfo = 1;
+  int64 orderID = 2;
+}
+
+message OrderReturnResponse {
+  int64 states = 1;
+}
+
+message SupplierIncreaseRequest {
+  repeated StockOpGoodInfo goodsInfo = 1;
+  int64 supplierID = 2;
+}
+
+message SupplierIncreaseResponse {
+  int64 states = 1;
+}
+
+message SupplierReduceRequest {
+  repeated StockOpGoodInfo goodsInfo = 1;
+  int64 supplierID = 2;
+}
+
+message SupplierReduceResponse {
+  int64 states = 1;
+}
+
+
+service StockOp{
+  rpc OrderReturn(OrderReturnRequest) returns (OrderReturnResponse);
+  rpc SupplierIncrease(SupplierIncreaseRequest) returns (SupplierIncreaseResponse);
+  rpc SupplierReduce(SupplierReduceRequest) returns (SupplierReduceResponse);
+}

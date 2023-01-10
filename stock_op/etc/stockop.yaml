@@ -1,0 +1,13 @@
+Name: stockop.rpc
+ListenOn: 0.0.0.0:9091
+Etcd:
+  Hosts:
+  - 49.233.55.149:2379
+  Key: stockop.rpc
+Mysql:
+  StockTable:
+    User: "root"
+    Passwd: "19861029"
+    Addr: "152.136.253.191"
+    DBName: "shop_microservice_stock"
+    Port: "3306"
