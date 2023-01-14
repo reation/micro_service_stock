@@ -36,9 +36,28 @@ message SupplierReduceResponse {
   int64 states = 1;
 }
 
+message StockOpGoodsID{
+  int64 goods_id = 1;
+}
+
+message StockGoodsData{
+  int64 goods_id = 1;
+  int64 goods_num = 2;
+}
+
+message GetGoodsStockRequest{
+  repeated StockOpGoodsID goodsID = 1;
+}
+
+message GetGoodsStockResponse{
+  int64 states = 1;
+  repeated StockGoodsData GoodsStock = 2;
+}
+
 
 service StockOp{
   rpc OrderReturn(OrderReturnRequest) returns (OrderReturnResponse);
   rpc SupplierIncrease(SupplierIncreaseRequest) returns (SupplierIncreaseResponse);
   rpc SupplierReduce(SupplierReduceRequest) returns (SupplierReduceResponse);
+  rpc GetGoodsStockByGoodsIDList(GetGoodsStockRequest) returns (GetGoodsStockResponse);
 }

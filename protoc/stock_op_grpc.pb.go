@@ -25,6 +25,7 @@ type StockOpClient interface {
 	OrderReturn(ctx context.Context, in *OrderReturnRequest, opts ...grpc.CallOption) (*OrderReturnResponse, error)
 	SupplierIncrease(ctx context.Context, in *SupplierIncreaseRequest, opts ...grpc.CallOption) (*SupplierIncreaseResponse, error)
 	SupplierReduce(ctx context.Context, in *SupplierReduceRequest, opts ...grpc.CallOption) (*SupplierReduceResponse, error)
+	GetGoodsStockByGoodsIDList(ctx context.Context, in *GetGoodsStockRequest, opts ...grpc.CallOption) (*GetGoodsStockResponse, error)
 }
 
 type stockOpClient struct {
@@ -62,6 +63,15 @@ func (c *stockOpClient) SupplierReduce(ctx context.Context, in *SupplierReduceRe
 	return out, nil
 }
 
+func (c *stockOpClient) GetGoodsStockByGoodsIDList(ctx context.Context, in *GetGoodsStockRequest, opts ...grpc.CallOption) (*GetGoodsStockResponse, error) {
+	out := new(GetGoodsStockResponse)
+	err := c.cc.Invoke(ctx, "/stock_op.StockOp/GetGoodsStockByGoodsIDList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // StockOpServer is the server API for StockOp service.
 // All implementations must embed UnimplementedStockOpServer
 // for forward compatibility
@@ -69,6 +79,7 @@ type StockOpServer interface {
 	OrderReturn(context.Context, *OrderReturnRequest) (*OrderReturnResponse, error)
 	SupplierIncrease(context.Context, *SupplierIncreaseRequest) (*SupplierIncreaseResponse, error)
 	SupplierReduce(context.Context, *SupplierReduceRequest) (*SupplierReduceResponse, error)
+	GetGoodsStockByGoodsIDList(context.Context, *GetGoodsStockRequest) (*GetGoodsStockResponse, error)
 	mustEmbedUnimplementedStockOpServer()
 }
 
@@ -84,6 +95,9 @@ func (UnimplementedStockOpServer) SupplierIncrease(context.Context, *SupplierInc
 }
 func (UnimplementedStockOpServer) SupplierReduce(context.Context, *SupplierReduceRequest) (*SupplierReduceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SupplierReduce not implemented")
+}
+func (UnimplementedStockOpServer) GetGoodsStockByGoodsIDList(context.Context, *GetGoodsStockRequest) (*GetGoodsStockResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetGoodsStockByGoodsIDList not implemented")
 }
 func (UnimplementedStockOpServer) mustEmbedUnimplementedStockOpServer() {}
 
@@ -152,6 +166,24 @@ func _StockOp_SupplierReduce_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _StockOp_GetGoodsStockByGoodsIDList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetGoodsStockRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StockOpServer).GetGoodsStockByGoodsIDList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/stock_op.StockOp/GetGoodsStockByGoodsIDList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StockOpServer).GetGoodsStockByGoodsIDList(ctx, req.(*GetGoodsStockRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // StockOp_ServiceDesc is the grpc.ServiceDesc for StockOp service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -170,6 +202,10 @@ var StockOp_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SupplierReduce",
 			Handler:    _StockOp_SupplierReduce_Handler,
+		},
+		{
+			MethodName: "GetGoodsStockByGoodsIDList",
+			Handler:    _StockOp_GetGoodsStockByGoodsIDList_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

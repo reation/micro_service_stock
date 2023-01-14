@@ -32,6 +32,7 @@ type (
 		OrderReduceGoodsStockByGoods(ctx context.Context, id, goodsNum int64) error
 		GetGoodsStockInfoByGoodsID(ctx context.Context, goodsID int64) (*GoodsStock, error)
 		GetGoodsStockInfoByGoodsIDList(ctx context.Context, goodsID []int64) (map[int64]GoodsStock, error)
+		GetGoodsStockListByGoodsIDList(ctx context.Context, goodsID []int64) (*[]GoodsStock, error)
 	}
 
 	defaultGoodsStockModel struct {
@@ -75,6 +76,21 @@ func (m *defaultGoodsStockModel) GetGoodsStockInfoByGoodsIDList(ctx context.Cont
 	}
 
 	return resp, nil
+}
+
+func (m *defaultGoodsStockModel) GetGoodsStockListByGoodsIDList(ctx context.Context, goodsID []int64) (*[]GoodsStock, error) {
+	ids := strings.Join(tool.IntToStringArr(goodsID), ",")
+	query := fmt.Sprintf("select %s from %s where `goods_id` in (%s)", goodsStockRows, m.table, ids)
+	var stockInfo []GoodsStock
+	err := m.conn.QueryRowsCtx(ctx, &stockInfo, query)
+	switch err {
+	case nil:
+		return &stockInfo, nil
+	case sqlc.ErrNotFound:
+		return nil, ErrNotFound
+	default:
+		return nil, err
+	}
 }
 
 func (m *defaultGoodsStockModel) GetGoodsStockInfoByGoodsID(ctx context.Context, goodsID int64) (*GoodsStock, error) {
