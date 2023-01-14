@@ -2,11 +2,11 @@ package logic
 
 import (
 	"context"
-	"micro_service_stock/config"
-	"micro_service_stock/model"
+	"github.com/reation/micro_service_stock/config"
+	"github.com/reation/micro_service_stock/model"
 
-	"micro_service_stock/protoc"
-	"micro_service_stock/stock_op/internal/svc"
+	"github.com/reation/micro_service_stock/protoc"
+	"github.com/reation/micro_service_stock/stock_op/internal/svc"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

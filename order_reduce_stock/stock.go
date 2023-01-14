@@ -4,10 +4,10 @@ import (
 	"flag"
 	"fmt"
 
-	"micro_service_stock/order_reduce_stock/internal/config"
-	"micro_service_stock/order_reduce_stock/internal/server"
-	"micro_service_stock/order_reduce_stock/internal/svc"
-	"micro_service_stock/protoc"
+	"github.com/reation/micro_service_stock/order_reduce_stock/internal/config"
+	"github.com/reation/micro_service_stock/order_reduce_stock/internal/server"
+	"github.com/reation/micro_service_stock/order_reduce_stock/internal/svc"
+	"github.com/reation/micro_service_stock/protoc"
 
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/core/service"

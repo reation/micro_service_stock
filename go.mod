@@ -1,4 +1,4 @@
-module micro_service_stock
+module github.com/reation/micro_service_stock
 
 go 1.19
 

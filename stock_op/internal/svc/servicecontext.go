@@ -2,9 +2,9 @@ package svc
 
 import (
 	"fmt"
+	"github.com/reation/micro_service_stock/model"
+	"github.com/reation/micro_service_stock/stock_op/internal/config"
 	"github.com/zeromicro/go-zero/core/stores/sqlx"
-	"micro_service_stock/model"
-	"micro_service_stock/stock_op/internal/config"
 )
 
 type StockDB struct {

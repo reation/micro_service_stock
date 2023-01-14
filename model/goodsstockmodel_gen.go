@@ -6,7 +6,7 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
-	"micro_service_stock/tool"
+	"github.com/reation/micro_service_stock/tool"
 	"strings"
 	"time"
 

@@ -2,9 +2,9 @@ package main
 
 import (
 	"context"
+	"github.com/reation/micro_service_stock/protoc"
 	"google.golang.org/grpc"
 	"log"
-	"micro_service_stock/protoc"
 	"time"
 )
 

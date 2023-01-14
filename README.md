@@ -1,4 +1,4 @@
-# micro_service_stock
+# github.com/reation/micro_service_stock
 
 #商品库存服务
 

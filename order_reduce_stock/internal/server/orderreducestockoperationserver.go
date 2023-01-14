@@ -6,9 +6,9 @@ package server
 import (
 	"context"
 
-	"micro_service_stock/order_reduce_stock/internal/logic"
-	"micro_service_stock/order_reduce_stock/internal/svc"
-	"micro_service_stock/protoc"
+	"github.com/reation/micro_service_stock/order_reduce_stock/internal/logic"
+	"github.com/reation/micro_service_stock/order_reduce_stock/internal/svc"
+	"github.com/reation/micro_service_stock/protoc"
 )
 
 type OrderReduceStockOperationServer struct {

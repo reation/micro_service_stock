@@ -3,11 +3,11 @@ package logic
 import (
 	"context"
 	"fmt"
+	"github.com/reation/micro_service_stock/config"
+	"github.com/reation/micro_service_stock/order_reduce_stock/internal/svc"
+	"github.com/reation/micro_service_stock/protoc"
 	"github.com/zeromicro/go-zero/core/logx"
 	"github.com/zeromicro/go-zero/core/stores/sqlx"
-	"micro_service_stock/config"
-	"micro_service_stock/order_reduce_stock/internal/svc"
-	"micro_service_stock/protoc"
 	"time"
 )
 

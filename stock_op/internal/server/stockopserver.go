@@ -6,9 +6,9 @@ package server
 import (
 	"context"
 
-	"micro_service_stock/protoc"
-	"micro_service_stock/stock_op/internal/logic"
-	"micro_service_stock/stock_op/internal/svc"
+	"github.com/reation/micro_service_stock/protoc"
+	"github.com/reation/micro_service_stock/stock_op/internal/logic"
+	"github.com/reation/micro_service_stock/stock_op/internal/svc"
 )
 
 type StockOpServer struct {

@@ -6,7 +6,7 @@ package orderreducestockoperation
 import (
 	"context"
 
-	"micro_service_stock/protoc"
+	"github.com/reation/micro_service_stock/protoc"
 
 	"github.com/zeromicro/go-zero/zrpc"
 	"google.golang.org/grpc"
